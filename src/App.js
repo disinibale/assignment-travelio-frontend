@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Card from "./Components/Card";
+import NavigationBar from "./Components/NavigationBar";
+
+import PageLayout from "./Layouts/PageLayout";
+import Home from './Pages/Home'
+import Wishlist from "./Pages/Wishlist";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<NavigationBar />
+
+			<Routes>
+				<Route element={<PageLayout />}>
+					<Route path="/" index element={<Home />} />
+					<Route path="wishlist" element={<Wishlist />} />
+				</Route>
+			</Routes>
+
+			{/* <div className="app antialiased bg-gray-100 text-gray-900 p-6">
+				<div className="container mx-auto">
+					<div className="flex flex-wrap -mx-4">
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+					</div>
+				</div>
+			</div> */}
+		</>
+	);
 }
 
 export default App;
